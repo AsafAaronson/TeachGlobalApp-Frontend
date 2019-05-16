@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageHeader from "../components/PageHeader"; //Props: type ("Workpage/Activity"), count (num), size ("S/-")
+import CardContainerHeader from "../components/CardContainerHeader"; //Props: type ("Workpage/Activity"), count (num), size ("S/-")
 import CardContainer from "../components/CardContainer"; //props: type("Workpage"/-), data{cardContent, userLiked}
 
 //props: data {cardsContent, userLiked}
@@ -13,7 +13,7 @@ class Activities extends Component {
     render() {
         return (
             <div>
-                <PageHeader
+                <CardContainerHeader
                     count={this.props.data.cardsContent.length}
                     type="Activity"
                 />

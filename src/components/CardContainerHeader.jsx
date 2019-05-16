@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 //Props: type ("Workpage/Activity"), count (num), size ("S/-")
 
-class PageHeader extends Component {
+class CardContainerHeader extends Component {
     renderDataByType = () => {
         if (this.props.count === 1) {
             return this.props.type;
@@ -37,4 +37,4 @@ class PageHeader extends Component {
     }
 }
 
-export default PageHeader;
+export default CardContainerHeader;

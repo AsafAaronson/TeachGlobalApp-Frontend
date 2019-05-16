@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import PageHeader from "../components/PageHeader"; //Props: type ("Workpage/Activity"), count (num), size ("S/-")
+import CardContainerHeader from "../components/CardContainerHeader"; //Props: type ("Workpage/Activity"), count (num), size ("S/-")
 import CardContainer from "../components/CardContainer"; //props: type("Workpage"/-), data{cardContent, userLiked}
 
 //props: data {cardsContent {both}, userLiked}
@@ -22,7 +22,7 @@ class Liked extends Component {
         return (
             <div>
                 <h1 className="row m-2">My Likes</h1>
-                <PageHeader
+                <CardContainerHeader
                     count={
                         this.filterLikedContent(
                             this.props.data.cardsContent.activities,
@@ -40,7 +40,7 @@ class Liked extends Component {
                     )}
                     raiseLike={id => this.raiseLike(id)}
                 />
-                <PageHeader
+                <CardContainerHeader
                     count={
                         this.filterLikedContent(
                             this.props.data.cardsContent.workpages,
