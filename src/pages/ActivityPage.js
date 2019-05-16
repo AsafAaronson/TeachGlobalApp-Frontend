@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
-import LikeButton from "../components/LikeButton";
-import {Link} from 'react-router-dom';
+import PageHeaderCard from "../components/PageHeaderCard";
 
 //props: activity:{id, title, content:{goals, accesories, todo, dothis, adapt}, isLiked}, raiseLike
 
@@ -23,7 +22,14 @@ class ActivityPage extends Component {
         return (
             <div className="container p-2">
                 {/* Page Header */}
-                <div className="row justify-content-center">
+                <PageHeaderCard
+                    text={this.props.activity.title}
+                    id={this.props.activity.id}
+                    isLiked={this.props.activity.isLiked}
+                    parentLink="/activities"
+                    raiseLike= {id => this.raiseLike(id)}
+                />
+                {/* <div className="row justify-content-center">
                     <div className="col col-md-10 col-lg-8">
                         <div className="card shadow-sm text-center">
                             <div className="card-body">
@@ -39,7 +45,7 @@ class ActivityPage extends Component {
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> */}
                 {/* Goals Row */}
                 <div className="row justify-content-center">
                     <div className="col col-md-10 col-lg-8">

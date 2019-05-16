@@ -1,6 +1,5 @@
 import React, { Component } from "react";
-import LikeButton from "../components/LikeButton";
-import { Link } from "react-router-dom";
+import PageHeaderCard from "../components/PageHeaderCard";
 
 //props: workpage:{id, title, description, content:{picture}, isLiked}, raiseLike
 
@@ -13,31 +12,20 @@ class WorkpagePage extends Component {
         return (
             <div className="container p-2">
                 {/* Page Header */}
-                <div className="row justify-content-center">
-                    <div className="col col-md-10 col-lg-8">
-                        <div className="card shadow-sm text-center">
-                            <div className="card-body">
-                                <h1 className="card-title">
-                                    {this.props.workpage.title}
-                                </h1>
-                                <LikeButton
-                                    raiseLike={id => this.raiseLike(id)}
-                                    isLiked={this.props.workpage.isLiked}
-                                    id={this.props.workpage.id}
-                                />
-                                <Link to="/workpages">
-                                    <button className="btn btn-info">
-                                        <i class="fa fa-arrow-left" /> Back
-                                    </button>
-                                </Link>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <PageHeaderCard
+                    text={this.props.workpage.title}
+                    id={this.props.workpage.id}
+                    isLiked={this.props.workpage.isLiked}
+                    parentLink="/workpages"
+                    raiseLike= {id => this.raiseLike(id)}
+                />
                 {/* Content Picture */}
                 <div className="row justify-content-center">
                     <div className="col col-md-10 col-lg-8 text-center">
-                        <img src={this.props.workpage.content.imgUrl} alt={this.props.workpage.title}/>
+                        <img
+                            src={this.props.workpage.content.imgUrl}
+                            alt={this.props.workpage.title}
+                        />
                     </div>
                 </div>
             </div>
