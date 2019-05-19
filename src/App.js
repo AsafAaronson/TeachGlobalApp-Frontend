@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import HomePage from "./pages/HomePage";
 import Activities from "./pages/Activities"; // props: data, raiseLike (function)
 import Workpages from "./pages/Workpages"; // props: data, raiseLike (function)
 import Liked from "./pages/Liked"; // props: data, raiseLike (function)
@@ -80,7 +81,9 @@ class App extends Component {
                             <Route
                                 exact
                                 path="/"
-                                render={() => <h1>Home Page</h1>}
+                                render={() => (
+                                    <HomePage />
+                                )}
                             />
                             {/* Activities Page Route */}
                             <Route

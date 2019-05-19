@@ -6,7 +6,7 @@ class Navbar extends Component {
         return(
         <div>
             <nav className="navbar navbar-expand-md bg-dark navbar-dark">
-                <a className="navbar-brand" href="/">Navbar</a>
+                <a className="navbar-brand" href="/">TeachGlobal</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span className="navbar-toggler-icon"></span>
                 </button>

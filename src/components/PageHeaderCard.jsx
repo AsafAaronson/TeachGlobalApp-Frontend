@@ -12,7 +12,7 @@ class PageHeaderCard extends Component {
     render() { 
         return (
             <div>
-                <div className="row justify-content-center">
+                <div className="row justify-content-center mb-2">
                     <div className="col col-md-10 col-lg-8">
                         <div className="card shadow-sm text-center">
                             <div className="card-body">
