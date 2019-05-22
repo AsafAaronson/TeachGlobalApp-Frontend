@@ -12,6 +12,7 @@ class Navbar extends Component {
                 </button>
                 <div className="collapse navbar-collapse" id="collapsibleNavbar">
                     <ul className="navbar-nav">
+                        <NavLink location="" text="Home" />
                         <NavLink location="activities" text="Activities" />
                         <NavLink location="workpages" text="Workpages" />
                         <NavLink location="liked" text="Liked" />

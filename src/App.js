@@ -6,7 +6,7 @@ import Workpages from "./pages/Workpages"; // props: data, raiseLike (function)
 import Liked from "./pages/Liked"; // props: data, raiseLike (function)
 import ActivityPage from "./pages/ActivityPage"; // props: activity
 import WorkpagePage from "./pages/WorkpagePage"; // props: workpage, raiseLike
-import GeneratorPage from './pages/GeneratorPage';
+import GeneratorPage from "./pages/GeneratorPage";
 import Navbar from "./components/Navbar";
 import { activities, workpages, userLiked } from "./database";
 
@@ -44,14 +44,6 @@ class App extends Component {
         }
     }
 
-    // getActivityContent = id => {
-    //     return this.state.activities.filter(el => el.id === id)[0];
-    // };
-
-    // getWorkpageContent = id => {
-    //     return this.state.workpages.filter(el => el.id === id)[0];
-    // };
-
     fetchData = () => {
         //API call to the db to get activities
         //(array of activity objects), workpages(array of workpage objects), user like(array of id's)
@@ -82,7 +74,13 @@ class App extends Component {
                                 exact
                                 path="/"
                                 render={() => (
-                                    <HomePage />
+                                    <HomePage
+                                        quantities={{
+                                            activities: this.state.activities.length,
+                                            workpages: this.state.workpages.length,
+                                            likes: this.state.userLiked.length
+                                        }}
+                                    />
                                 )}
                             />
                             {/* Activities Page Route */}
@@ -174,8 +172,18 @@ class App extends Component {
                                 path="/workpage/generator"
                                 render={() => (
                                     <div>
-                                        <GeneratorPage amount={6} minLimit={0} maxLimit={10} type={'x'}/>
-                                        <GeneratorPage amount={6} minLimit={30} maxLimit={100} type={'-'}/>
+                                        <GeneratorPage
+                                            amount={6}
+                                            minLimit={0}
+                                            maxLimit={10}
+                                            type={"x"}
+                                        />
+                                        <GeneratorPage
+                                            amount={6}
+                                            minLimit={30}
+                                            maxLimit={100}
+                                            type={"-"}
+                                        />
                                     </div>
                                 )}
                             />
