@@ -1,7 +1,20 @@
 import React, { Component } from "react";
-import Card from "../components/Card";
 
 class HomePage extends Component {
+    emptyCard = (content, amount) => (
+        <div className="card shadow-sm text-start m-1 mb-2">
+            <div className="card-body">
+                <h2>
+                    Check out the{" "}
+                    <span class="badge badge-primary">
+                        {amount}
+                    </span>{" "}
+                    {content}
+                </h2>
+            </div>
+        </div>
+    );
+
     render() {
         return (
             <div>
@@ -13,39 +26,9 @@ class HomePage extends Component {
                     />
                     <h1>Welcome to the Teach Global App</h1>
                     <div className="row justify-content-center">
-                        <div className="card shadow-sm text-start m-1 mb-2">
-                            <div className="card-body">
-                                <h2>
-                                    Check out the{" "}
-                                    <span class="badge badge-primary">
-                                        {this.props.quantities.activities}
-                                    </span>{" "}
-                                    Activities available
-                                </h2>
-                            </div>
-                        </div>
-                        <div className="card shadow-sm text-start m-1 mb-2">
-                            <div className="card-body">
-                                <h2>
-                                    Check out the{" "}
-                                    <span class="badge badge-primary">
-                                        {this.props.quantities.workpages}
-                                    </span>{" "}
-                                    Workpages available
-                                </h2>
-                            </div>
-                        </div>
-                        <div className="card shadow-sm text-start m-1 mb-2">
-                            <div className="card-body">
-                                <h2>
-                                    Check out your{" "}
-                                    <span class="badge badge-primary">
-                                        {this.props.quantities.likes}
-                                    </span>{" "}
-                                    favorites
-                                </h2>
-                            </div>
-                        </div>
+                        {this.emptyCard("Activities Available", this.props.quantities.activities)}
+                        {this.emptyCard("Workpages Available", this.props.quantities.workpages)}
+                        {this.emptyCard("Likes you made", this.props.quantities.likes)}
                     </div>
                 </div>
             </div>

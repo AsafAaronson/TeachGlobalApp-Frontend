@@ -29,23 +29,6 @@ class ActivityPage extends Component {
                     parentLink="/activities"
                     raiseLike= {id => this.raiseLike(id)}
                 />
-                {/* <div className="row justify-content-center">
-                    <div className="col col-md-10 col-lg-8">
-                        <div className="card shadow-sm text-center">
-                            <div className="card-body">
-                                <h1 className="card-title">
-                                    {this.props.activity.title}
-                                </h1>
-                                <LikeButton
-                                    raiseLike={id => this.raiseLike(id)}
-                                    isLiked={this.props.activity.isLiked}
-                                    id={this.props.activity.id}
-                                />
-                                <Link  to='/activities'><button className='btn btn-info'><i class="fa fa-arrow-left" /> Back</button></Link>
-                            </div>
-                        </div>
-                    </div>
-                </div> */}
                 {/* Goals Row */}
                 <div className="row justify-content-center">
                     <div className="col col-md-10 col-lg-8">

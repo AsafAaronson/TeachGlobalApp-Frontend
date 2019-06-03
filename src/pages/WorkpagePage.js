@@ -34,7 +34,7 @@ class WorkpagePage extends Component {
                                 <img
                                     src={this.props.workpage.content.imgUrl}
                                     alt={this.props.workpage.title}
-                                    className="img-fluid"
+                                    className="img-fluid rounded"
                                 />
                             </div>
                         </div>

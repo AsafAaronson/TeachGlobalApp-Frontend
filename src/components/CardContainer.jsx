@@ -9,19 +9,6 @@ class CardContainer extends Component {
         this.props.raiseLike(id)
     }
 
-    // assignLikes = () => {
-    //     return this.props.data.cardsContent.map(element => {
-    //         if (this.props.data.userLiked.includes(element.id)) {
-    //             element.isLiked = true;
-    //         } else {
-    //             element.isLiked = false;
-    //         }
-    //         return element;
-    //     });
-    // };
-
-
-
     render() {
         return (
             <div className="container-fluid">
