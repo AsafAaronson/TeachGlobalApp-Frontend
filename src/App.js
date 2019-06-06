@@ -172,18 +172,7 @@ class App extends Component {
                                 path="/workpage/generator"
                                 render={() => (
                                     <div>
-                                        <GeneratorPage
-                                            amount={6}
-                                            minLimit={0}
-                                            maxLimit={10}
-                                            type={"x"}
-                                        />
-                                        <GeneratorPage
-                                            amount={6}
-                                            minLimit={30}
-                                            maxLimit={100}
-                                            type={"-"}
-                                        />
+                                        <GeneratorPage/>
                                     </div>
                                 )}
                             />
