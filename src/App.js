@@ -76,8 +76,10 @@ class App extends Component {
                                 render={() => (
                                     <HomePage
                                         quantities={{
-                                            activities: this.state.activities.length,
-                                            workpages: this.state.workpages.length,
+                                            activities: this.state.activities
+                                                .length,
+                                            workpages: this.state.workpages
+                                                .length,
                                             likes: this.state.userLiked.length
                                         }}
                                     />
@@ -172,7 +174,7 @@ class App extends Component {
                                 path="/workpage/generator"
                                 render={() => (
                                     <div>
-                                        <GeneratorPage/>
+                                        <GeneratorPage />
                                     </div>
                                 )}
                             />
