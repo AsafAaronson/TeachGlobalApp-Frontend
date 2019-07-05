@@ -27,39 +27,51 @@ class GeneratorPage extends Component {
         return Math.floor(Math.random() * (max + 1 - min) + min);
     };
 
-    getRandomPair = () => {
-        const randNum = this.getRandomNumber(
-            this.state.minLimit,
-            this.state.maxLimit
-        );
-        return [
-            randNum,
-            this.getRandomNumber(
-                this.state.minLimit,
-                this.state.arithmetic === "-" || this.state.arithmetic === "%"
-                    ? randNum
-                    : this.state.maxLimit
-            )
-        ];
+    getRandomPair = (min, max, isFirstGreater) => {
+        const randNum1 = this.getRandomNumber(min, max);
+        const randNum2 = this.getRandomNumber(min, max);
+        if (isFirstGreater && randNum2 > randNum1){
+            return [randNum2, randNum1]
+        }
+        return [randNum1, randNum2];
     };
 
-    generatePageContent = () => {
+    generatePageContent = (min, max, amount, isFirstGreater) => {
         let content = [];
-        for (let i = 0; i < this.state.amount; i += 1) {
-            let pair = this.getRandomPair();
-            while (content.includes(pair)) {
-                pair = this.getRandomPair();
-            }
+        console.log(min);
+        console.log(max); 
+        //up till this point everyting works perfectly
+        for (let i = 0; i < amount; i += 1) {
+            let pair = this.getRandomPair(min, max, isFirstGreater);
+            // while (content.includes(pair)) {
+            //     // pair = this.getRandomPair(min, max, isFirstGreater);
+            //     console.log(
+            //         "a pair repeated itself, the content should be missing one"
+            //     );
+            // }
+            console.log(pair);
             content.push(pair);
         }
-        console.log(this.state);
         return content;
+        //the content generated is wrong (max limit is 10x the expected max)
+    };
+
+    renderPageContent = (min, max, amount, arithmetic, type) => {
+        const isFirstGreater = arithmetic === "-" || arithmetic === "%";
+        const generated = this.generatePageContent(min,max,amount,isFirstGreater);
+        const toRender = generated.map(pair => 
+            type === "Vertical" ? (
+                <VerticalProblem numbers={pair} arithmetic={arithmetic} />
+            ) : (
+                <OneLineProblem numbers={pair} arithmetic={arithmetic} />
+            )
+        );
+        return toRender;
     };
 
     handleChange(event) {
-        const target = event.target;
-        const value = target.value;
-        const name = target.name;
+        const value = event.target.value;
+        const name = event.target.name;
 
         this.setState({
             [name]: value
@@ -69,21 +81,13 @@ class GeneratorPage extends Component {
     handleGenerate = () => {
         // check if the state is legal
         // render according to the rules
-        const content = this.generatePageContent().map(pair =>
-            this.state.type === "Vertical" ? (
-                <VerticalProblem
-                    numbers={pair}
-                    arithmetic={this.state.arithmetic}
-                />
-            ) : (
-                <OneLineProblem
-                    numbers={pair}
-                    arithmetic={this.state.arithmetic}
-                />
-            )
+        const content = this.renderPageContent(
+            this.state.minLimit,
+            this.state.maxLimit,
+            this.state.amount,
+            this.state.arithmetic,
+            this.state.type
         );
-        console.log(content);
-
         this.setState({
             toPrint: content
         });
@@ -140,7 +144,7 @@ class GeneratorPage extends Component {
                                     </div>
                                     <div className="col col-8 col-sm-6 col-md-4 col-lg-3">
                                         <ChoiceField
-                                            title="type"
+                                            title="Type"
                                             name="type"
                                             options={["One Line", "Vertical"]}
                                             value={this.state.type}
