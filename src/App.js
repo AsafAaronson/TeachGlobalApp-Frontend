@@ -8,7 +8,7 @@ import ActivityPage from "./pages/ActivityPage"; // props: activity
 import WorkpagePage from "./pages/WorkpagePage"; // props: workpage, raiseLike
 import GeneratorPage from "./pages/GeneratorPage";
 import Navbar from "./components/Navbar";
-import { activities, workpages, userLiked } from "./database";
+import { activities, workpages, users } from "./database";
 
 class App extends Component {
     constructor() {
@@ -16,6 +16,7 @@ class App extends Component {
         this.state = {
             activities: [],
             workpages: [],
+            userInfo:[],
             userLiked: []
         };
     }
@@ -44,29 +45,29 @@ class App extends Component {
         }
     }
 
-    fetchData = () => {
+    fetchData = (id) => {
         //API call to the db to get activities
         //(array of activity objects), workpages(array of workpage objects), user like(array of id's)
         console.log("Fetching data");
-        const [apiAct, apiWkp, apiUslks] = [activities, workpages, userLiked];
-        return { activities: apiAct, workpages: apiWkp, userLiked: apiUslks };
+        const [apiAct, apiWkp, apiUsr] = [activities, workpages, users[id]];
+        return { activities: apiAct, workpages: apiWkp, userInfo: apiUsr };
     };
 
     componentDidMount = () => {
-        const data = this.fetchData();
+        const data = this.fetchData(0);
         this.setState({
             activities: data.activities,
             workpages: data.workpages,
-            userLiked: data.userLiked
+            userInfo: data.userInfo,
+            userLiked: data.userInfo.userLikes
         });
     };
 
     render() {
-        console.log(this.state.userLiked);
         return (
             <div className="App">
                 <Router>
-                    <Navbar />
+                    <Navbar user={this.state.userInfo}/>
                     <main>
                         <Switch>
                             {/* HomePage Route */}

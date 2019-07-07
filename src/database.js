@@ -111,14 +111,14 @@ export const workpages = [
         //up to 50
         description: "Workpage demonstartion that has a purpose of demo ",
         imgUrl: "https://picsum.photos/200/125",
-        content:{imgUrl: 'https://picsum.photos/595/842'}
+        content: { imgUrl: "https://picsum.photos/595/842" }
     },
     {
         id: 7,
         title: "Math Workpage 1",
         description: "Workpage demonstartion that has a purpose of bla",
         imgUrl: "https://picsum.photos/200/125",
-        content:{imgUrl: 'https://picsum.photos/595/842'}
+        content: { imgUrl: "https://picsum.photos/595/842" }
     },
     {
         id: 8,
@@ -126,8 +126,16 @@ export const workpages = [
         description:
             "Workpage demonstartion that has a purpose of  coserntent.",
         imgUrl: "https://picsum.photos/200/125",
-        content:{imgUrl: 'https://picsum.photos/595/842'}
+        content: { imgUrl: "https://picsum.photos/595/842" }
     }
 ];
 
-export let userLiked = [];
+export let users = [
+    {
+        id: 1,
+        profilePicUrl: "https://picsum.photos/50/50",
+        firstName: "Lior",
+        lastName: "Parnes",
+        userLikes: [1, 2, 4, 8, 7]
+    }
+];
