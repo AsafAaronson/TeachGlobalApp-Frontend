@@ -21,7 +21,7 @@ class InputField extends Component {
                     className="form-control"
                     placeholder={this.props.placeholder}
                     aria-label={this.props.title}
-                    type="text"
+                    type="number"
                     name={this.props.name}
                     value={this.props.value}
                     onChange={(event) => this.onChange(event)}

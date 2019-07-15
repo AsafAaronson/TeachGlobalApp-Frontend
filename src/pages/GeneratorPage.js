@@ -30,8 +30,8 @@ class GeneratorPage extends Component {
     getRandomPair = (min, max, isFirstGreater) => {
         const randNum1 = this.getRandomNumber(min, max);
         const randNum2 = this.getRandomNumber(min, max);
-        if (isFirstGreater && randNum2 > randNum1){
-            return [randNum2, randNum1]
+        if (isFirstGreater && randNum2 > randNum1) {
+            return [randNum2, randNum1];
         }
         return [randNum1, randNum2];
     };
@@ -39,27 +39,25 @@ class GeneratorPage extends Component {
     generatePageContent = (min, max, amount, isFirstGreater) => {
         let content = [];
         console.log(min);
-        console.log(max); 
-        //up till this point everyting works perfectly
+        console.log(max);
         for (let i = 0; i < amount; i += 1) {
             let pair = this.getRandomPair(min, max, isFirstGreater);
-            // while (content.includes(pair)) {
-            //     // pair = this.getRandomPair(min, max, isFirstGreater);
-            //     console.log(
-            //         "a pair repeated itself, the content should be missing one"
-            //     );
-            // }
+            //make it so it doesn't repeat
             console.log(pair);
             content.push(pair);
         }
         return content;
-        //the content generated is wrong (max limit is 10x the expected max)
     };
 
     renderPageContent = (min, max, amount, arithmetic, type) => {
         const isFirstGreater = arithmetic === "-" || arithmetic === "%";
-        const generated = this.generatePageContent(min,max,amount,isFirstGreater);
-        const toRender = generated.map(pair => 
+        const generated = this.generatePageContent(
+            min,
+            max,
+            amount,
+            isFirstGreater
+        );
+        const toRender = generated.map(pair =>
             type === "Vertical" ? (
                 <VerticalProblem numbers={pair} arithmetic={arithmetic} />
             ) : (
@@ -79,15 +77,17 @@ class GeneratorPage extends Component {
     }
 
     handleGenerate = () => {
-        // check if the state is legal
-        // render according to the rules
-        const content = this.renderPageContent(
-            this.state.minLimit,
-            this.state.maxLimit,
-            this.state.amount,
+        const parameters = [
+            Number(this.state.minLimit),
+            Number(this.state.maxLimit),
+            Number(this.state.amount),
             this.state.arithmetic,
             this.state.type
-        );
+        ];
+        // check if the state is legal
+        
+        // render according to the rules
+        const content = this.renderPageContent(...parameters);
         this.setState({
             toPrint: content
         });
