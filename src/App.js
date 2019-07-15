@@ -76,6 +76,7 @@ class App extends Component {
                                 path="/"
                                 render={() => (
                                     <HomePage
+                                        userInfo = {this.state.userInfo}
                                         quantities={{
                                             activities: this.state.activities
                                                 .length,
@@ -121,9 +122,8 @@ class App extends Component {
                                     <Liked
                                         data={{
                                             cardsContent: {
-                                                activities: this.state
-                                                    .activities,
-                                                workpages: this.state.workpages
+                                                activities:this.assignLikes(this.state.activities),
+                                                workpages: this.assignLikes(this.state.workpages)
                                             },
                                             userLiked: this.state.userLiked
                                         }}

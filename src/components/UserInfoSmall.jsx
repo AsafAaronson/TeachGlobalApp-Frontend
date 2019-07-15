@@ -11,7 +11,7 @@ class UserInfoSmall extends Component {
                         <img className='img-fluid rounded' src={this.props.profilePicUrl}></img>
                     </div>
                     <div className="col">
-                        <div className='text-left'>{this.props.fullName}</div>
+                        <div className='text'>{this.props.fullName}</div>
                     </div>
                 </div>
             </div>

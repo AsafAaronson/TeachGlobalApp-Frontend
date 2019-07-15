@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Card from "../components/Card";
 import PageHeaderCard from "../components/PageHeaderCard";
 
-//props: activity:{id, title, content:{goals, accesories, todo, dothis, adapt}, isLiked}, raiseLike
+//props: activity:{id, title, content:{goals, accesories, todo, dothis, adapt, additionalPages}, isLiked}, raiseLike
 
 class ActivityPage extends Component {
     renderList = (content, iconType = "fa fa-chevron-right") => {
@@ -81,6 +81,22 @@ class ActivityPage extends Component {
                         />
                     </div>
                 </div>
+                {/* Additional Pages */}
+                {this.props.activity.content.additionalPages.map(url => (
+                    <div className="row justify-content-center">
+                        <div className="col col-md-10 col-lg-8 text-center">
+                            <div className="card shadow-sm text-center">
+                                <div className="card-body">
+                                    <img
+                                        src={url}
+                                        alt={this.props.activity.title}
+                                        className="img-fluid rounded"
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                ))}          
                 {/* Footer */}
                 <div className="row justify-content-center">
                     <h2>Good Luck!</h2>

@@ -8,7 +8,8 @@ export const activities = [
             accesories: ["str", "str", "str"],
             todolist: ["str", "str", "str"],
             dothis: ["str"],
-            adapt: "str"
+            adapt: "str",
+            additionalPages : []
         }
     */
     {
@@ -30,7 +31,8 @@ export const activities = [
             dothis: [
                 "Born and raised in the Austrian Empire, Tesla received an advanced education in engineering and physics in the 1870s and gained practical experience in the early"
             ],
-            adapt: "if the kids are old ekfekrjnfkerjnf"
+            adapt: "if the kids are old ekfekrjnfkerjnf",
+            additionalPages : []
         }
     },
     {
@@ -60,7 +62,9 @@ export const activities = [
                 "Then put a large bristol in the middle of the table / circle and ask each child to write his letter in a different place on the board. Hang the Bristol on the wall and ask each child to come and get a sticker (if you have some) of one of the letters and put them in the right place. If there are no stickers, you can simply ask the child to Identify a particular letter."
             ],
             adapt:
-                "This is the basic idea of ​​activity but you can adjust the activity to the children's age and the level of the children. for example if its to easy for the group, instead letters you can use groups of words like colors."
+                "This is the basic idea of ​​activity but you can adjust the activity to the children's age and the level of the children. for example if its to easy for the group, instead letters you can use groups of words like colors.",
+            additionalPages : ["https://picsum.photos/595/842", "https://picsum.photos/595/841"]
+
         }
     },
     {
@@ -73,7 +77,8 @@ export const activities = [
             accesories: ["str", "str", "str"],
             todolist: ["str", "str", "str"],
             dothis: ["str"],
-            adapt: "str"
+            adapt: "str",
+            additionalPages : []
         }
     },
     {
@@ -86,7 +91,8 @@ export const activities = [
             accesories: ["str", "str", "str"],
             todolist: ["str", "str", "str"],
             dothis: ["str"],
-            adapt: "str"
+            adapt: "str",
+            additionalPages : []
         }
     },
     {
@@ -99,7 +105,8 @@ export const activities = [
             accesories: ["str", "str", "str"],
             todolist: ["str", "str", "str"],
             dothis: ["str"],
-            adapt: "str"
+            adapt: "str",
+            additionalPages : []
         }
     }
 ];
@@ -137,5 +144,12 @@ export let users = [
         firstName: "Lior",
         lastName: "Parnes",
         userLikes: [1, 2, 4, 8, 7]
-    }
+    },
+    {
+        id: 2,
+        profilePicUrl: "https://picsum.photos/50/50",
+        firstName: "Asaf",
+        lastName: "Aaronson",
+        userLikes: [1, 3, 6]
+    },
 ];
