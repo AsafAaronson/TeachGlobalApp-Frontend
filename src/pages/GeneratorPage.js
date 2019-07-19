@@ -36,16 +36,29 @@ class GeneratorPage extends Component {
         return [randNum1, randNum2];
     };
 
+    isIncluded = (el, arr) => {
+        let isTrue = false;
+        arr.forEach(arrEl => {
+            if (arrEl[0] === el[0] && arrEl[1] === el[1]) {
+                isTrue = true;
+            }
+        });
+        return isTrue;
+    };
+
     generatePageContent = (min, max, amount, isFirstGreater) => {
         let content = [];
-        console.log(min);
-        console.log(max);
-        for (let i = 0; i < amount; i += 1) {
+        let infinityCounter = 0;
+        while (content.length < amount && infinityCounter < 10) {
             let pair = this.getRandomPair(min, max, isFirstGreater);
-            //make it so it doesn't repeat
-            console.log(pair);
-            content.push(pair);
+            if (this.isIncluded(pair, content)) {
+                infinityCounter++;
+            } else {
+                content.push(pair);
+                infinityCounter = 0;
+            }
         }
+        console.log(content);
         return content;
     };
 
@@ -76,7 +89,20 @@ class GeneratorPage extends Component {
         });
     }
 
+    isLegal = (min, max, amount) => {
+        const variables = { maxAmount: 100, sizeOfPair: 2 };
+        if (
+            min > max ||
+            amount > variables.maxAmount ||
+            (max - min) ** variables.sizeOfPair < amount
+        ) {
+            return false;
+        }
+        return true;
+    };
+
     handleGenerate = () => {
+        let content = "";
         const parameters = [
             Number(this.state.minLimit),
             Number(this.state.maxLimit),
@@ -85,9 +111,19 @@ class GeneratorPage extends Component {
             this.state.type
         ];
         // check if the state is legal
-        
+        content = this.isLegal(...parameters.slice(0, 3)) ? (
+            this.renderPageContent(...parameters)
+        ) : (
+            <div>
+            <h2>Something in your request was illegal</h2>
+                <ul>
+                    <li>Not enough possible combinations (range too big for amount)</li>
+                    <li>Amount bigger than 100</li>
+                    <li>Maximum is smaller than minimum</li>
+                </ul>
+            </div>
+        );
         // render according to the rules
-        const content = this.renderPageContent(...parameters);
         this.setState({
             toPrint: content
         });
