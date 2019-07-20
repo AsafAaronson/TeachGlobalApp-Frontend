@@ -28,6 +28,7 @@ class CardContainer extends Component {
                             />
                         </div>
                     ))}
+                    {this.props.data.additional}
                 </div>
             </div>
         );

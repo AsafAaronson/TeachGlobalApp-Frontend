@@ -54,7 +54,7 @@ class App extends Component {
     };
 
     componentDidMount = () => {
-        const data = this.fetchData(0);
+        const data = this.fetchData(1);
         this.setState({
             activities: data.activities,
             workpages: data.workpages,
@@ -131,6 +131,15 @@ class App extends Component {
                                     />
                                 )}
                             />
+                            {/* Generator Page Route */}
+                            <Route
+                                path="/workpage/generator"
+                                render={() => (
+                                    <div>
+                                        <GeneratorPage />
+                                    </div>
+                                )}
+                            />
                             {/* A Page for each Activity or Workpage in the database */}
                             {this.state.activities.map(el => (
                                 <Route
@@ -170,15 +179,6 @@ class App extends Component {
                                     )}
                                 />
                             ))}
-                            {/* Generator Page Route */}
-                            <Route
-                                path="/workpage/generator"
-                                render={() => (
-                                    <div>
-                                        <GeneratorPage />
-                                    </div>
-                                )}
-                            />
                             {/* 404 */}
                             <Route render={() => <h1>404</h1>} />
                         </Switch>

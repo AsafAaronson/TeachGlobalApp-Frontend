@@ -113,6 +113,13 @@ export const activities = [
 
 export const workpages = [
     {
+        id: "generator",
+        title: "Workpage Generator",
+        description: "Decide your prefrences and build your own math workpage",
+        imgUrl: "https://picsum.photos/200/125",
+        content: ""
+    },
+    {
         id: 6,
         title: "Multipication Table",
         //up to 50
