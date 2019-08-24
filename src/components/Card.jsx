@@ -2,6 +2,8 @@ import React, { Component } from "react";
 import LikeButton from "./LikeButton";
 import GoButton from "./GoButton";
 
+//props: id, type, title, description, imgUrl, buttons, isLiked, raiseLike
+
 class Card extends Component {
     constructor(props) {
         super(props);
@@ -40,7 +42,7 @@ class Card extends Component {
 
     render() {
         return (
-                <div className="card shadow-sm text-start m-1 mb-2">
+                <div className="card text-start m-1 mb-2" style={{"box-shadow":" 0 4px 4px 0 rgba(153, 153, 153, 0.01), 0 3px 20px 0 rgba(0, 0, 0, 0.19)"}}>
                     {this.renderImage()}
                     <div className="card-body">
                         <h5 className="card-title">{this.props.title}</h5>

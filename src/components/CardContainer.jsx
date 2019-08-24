@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Card from "./Card";
 
-//props: type("Workpage"/-), data{cardContent, userLiked}
+//props: type("Workpage"/-), data{cardsContent, additional}, raiseLike
 
 class CardContainer extends Component {
     

@@ -65,7 +65,7 @@ class App extends Component {
 
     render() {
         return (
-            <div className="App">
+            <div style={{"background":"#eeeeee"}}>
                 <Router>
                     <Navbar user={this.state.userInfo}/>
                     <main>
@@ -92,11 +92,7 @@ class App extends Component {
                                 path="/activities"
                                 render={() => (
                                     <Activities
-                                        data={{
-                                            cardsContent: this.assignLikes(
-                                                this.state.activities
-                                            )
-                                        }}
+                                        data={{cardsContent: this.assignLikes(this.state.activities)}}
                                         raiseLike={id => this.handleLike(id)}
                                     />
                                 )}
@@ -107,10 +103,7 @@ class App extends Component {
                                 render={() => (
                                     <Workpages
                                         data={{
-                                            cardsContent: this.assignLikes(
-                                                this.state.workpages
-                                            )
-                                        }}
+                                            cardsContent: this.assignLikes(this.state.workpages)}}
                                         raiseLike={id => this.handleLike(id)}
                                     />
                                 )}

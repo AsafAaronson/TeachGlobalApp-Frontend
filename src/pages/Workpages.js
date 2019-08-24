@@ -5,20 +5,46 @@ import CardContainer from "../components/CardContainer"; //props: type("Workpage
 //props: data {cardsContent, userLiked}
 
 class Workpages extends Component {
+    constructor(props) {
+        super(props);
+        this.handleChange = this.handleChange.bind(this);
+        this.state = { search: ""};
+    }
+
+    handleChange = event => {
+        this.setState({ search: event.target.value });
+    };
+
+    filterCardsContent = array => {
+        return array.filter(
+            el =>
+                el.title
+                    .toLowerCase()
+                    .includes(this.state.search.toLocaleLowerCase()) ||
+                el.description
+                    .toLowerCase()
+                    .includes(this.state.search.toLocaleLowerCase())
+        );
+    };
+
     raiseLike = id => {
-        console.log(`Activity comp raised like: ${id}`);
         this.props.raiseLike(id);
     };
 
     render() {
+        let cardsContent = this.filterCardsContent(
+            this.props.data.cardsContent
+        );
         return (
             <div>
                 <CardContainerHeader
-                    count={this.props.data.cardsContent.length}
+                    count={cardsContent.length}
                     type="Workpage"
+                    searchValue={this.state.search}
+                    raiseChange={this.handleChange}
                 />
                 <CardContainer
-                    data={this.props.data}
+                    data={{cardsContent:cardsContent}}
                     type="Workpage"
                     raiseLike={id => this.raiseLike(id)}
                 />

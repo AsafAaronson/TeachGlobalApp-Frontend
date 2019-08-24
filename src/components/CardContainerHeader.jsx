@@ -1,8 +1,12 @@
 import React, { Component } from "react";
 
-//Props: type ("Workpage/Activity"), count (num), size ("S/-")
+//Props: type ("Workpage/Activity"), count (num), size ("S/-"), searchValue, raiseChange
 
 class CardContainerHeader extends Component {
+    onChange = (e) => {
+        this.props.raiseChange(e);
+    }
+    
     renderDataByType = () => {
         if (this.props.count === 1) {
             return this.props.type;
@@ -13,9 +17,23 @@ class CardContainerHeader extends Component {
 
     headerContent = () => {
         return (
-            <div>
-                <span class="badge badge-secondary">{this.props.count}</span>{" "}
-                {this.renderDataByType()}:
+            <div className="row">
+                <div className="col">
+                    <span class="badge badge-secondary">{this.props.count}</span>{" "}
+                    {this.renderDataByType()}:
+                </div>
+                <div className="col">
+                    <input
+                        style = {{"border":"1px solid #248f8f", "border-radius":"5px", "font-family":"arial"}}
+                        size="10"
+                        className="form"
+                        placeholder=" Search"
+                        type="text"
+                        name= "SearchField"
+                        value={this.props.searchValue}
+                        onChange={(event) => this.onChange(event)}
+                    />
+                </div>
             </div>
         )
     } 

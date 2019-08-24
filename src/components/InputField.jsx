@@ -25,7 +25,6 @@ class InputField extends Component {
                     name={this.props.name}
                     value={this.props.value}
                     onChange={(event) => this.onChange(event)}
-                    
                 />
             </div>
         );
