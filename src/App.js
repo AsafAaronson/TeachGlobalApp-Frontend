@@ -65,25 +65,30 @@ class App extends Component {
 
     render() {
         return (
-            <div style={{"background":"#eeeeee"}}>
+            <div style={{"background":"#eeeeee","height":"100%"}}>
                 <Router>
                     <Navbar user={this.state.userInfo}/>
                     <main>
                         <Switch>
                             {/* HomePage Route */}
                             <Route
-                                exact
-                                path="/"
+                                exact path="/"
                                 render={() => (
                                     <HomePage
                                         userInfo = {this.state.userInfo}
                                         quantities={{
-                                            activities: this.state.activities
-                                                .length,
-                                            workpages: this.state.workpages
-                                                .length,
+                                            activities: this.state.activities.length,
+                                            workpages: this.state.workpages.length,
                                             likes: this.state.userLiked.length
                                         }}
+                                        data={{
+                                            cardsContent: {
+                                                activities:this.assignLikes(this.state.activities),
+                                                workpages: this.assignLikes(this.state.workpages)
+                                            },
+                                            userLiked: this.state.userLiked
+                                        }}
+                                        raiseLike={id => this.handleLike(id)}
                                     />
                                 )}
                             />

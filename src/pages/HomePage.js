@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import Liked from "./Liked"; // props: data, raiseLike (function)
 
 class HomePage extends Component {
     emptyCard = (page, content, amount, link) => (
@@ -22,6 +23,11 @@ class HomePage extends Component {
         </div>
     );
 
+    raiseLike = id => {
+        console.log(`Activity comp raised like: ${id}`);
+        this.props.raiseLike(id);
+    };
+
     render() {
         return (
             <div>
@@ -35,7 +41,13 @@ class HomePage extends Component {
                     <div className="row justify-content-center">
                         {this.emptyCard("Activities", "Available", this.props.quantities.activities, '/activities')}
                         {this.emptyCard("Workpages", "Available", this.props.quantities.workpages, 'workpages')}
-                        {this.emptyCard("Likes", "you made", this.props.quantities.likes, '/liked')}
+                        {/* {this.emptyCard("Likes", "you made", this.props.quantities.likes, '/liked')} */}
+                    </div>
+                    <div className="justify content center">
+                        <Liked
+                            data={this.props.data}
+                            raiseLike={id => this.raiseLike(id)}
+                        />
                     </div>
                 </div>
             </div>

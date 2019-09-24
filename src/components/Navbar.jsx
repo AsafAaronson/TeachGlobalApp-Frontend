@@ -29,7 +29,7 @@ class Navbar extends Component {
                             <NavLink location="" text="Home" />
                             <NavLink location="activities" text="Activities" />
                             <NavLink location="workpages" text="Workpages" />
-                            <NavLink location="liked" text="Liked" />
+                            {/* <NavLink location="liked" text="Liked" /> */}
                         </ul>
                     </div>
                     <UserInfoSmall
