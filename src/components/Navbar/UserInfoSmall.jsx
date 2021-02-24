@@ -8,7 +8,7 @@ class UserInfoSmall extends Component {
             <div className="card bg-light">
                 <div className="row">
                     <div className="col">
-                        <img className='img-fluid rounded' src={this.props.profilePicUrl}></img>
+                        <img className='img-fluid rounded' src={this.props.profilePicUrl} alt={this.props.fullName}></img>
                     </div>
                     <div className="col">
                         <div className='text'>{this.props.fullName}</div>

@@ -1,7 +1,10 @@
 export const activities = [
     /*
-        id: number
+        id: str,
+        date: date.
+        creator: "str",
         title: "str",
+        tags: ["str","str"]
         description: "str", // (up to 100)
         content: {
             goals: ["str", "str", "str"],
@@ -14,6 +17,7 @@ export const activities = [
     */
     {
         id: 1,
+        type: 'activity',
         title: "Activity 1",
         description:
             "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -37,6 +41,7 @@ export const activities = [
     },
     {
         id: 2,
+        type: 'activity',
         title: "Kings and Queens of the ABC",
         description:
             "A simple activity to teach or practice the ABC letters in a visual way",
@@ -69,6 +74,7 @@ export const activities = [
     },
     {
         id: 3,
+        type: 'activity',
         title: "Memory Game",
         description:
             "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -83,6 +89,7 @@ export const activities = [
     },
     {
         id: 4,
+        type: 'activity',
         title: "Puzzle",
         description:
             "Some quick example text to build on the card title andI love my Liorita",
@@ -97,6 +104,7 @@ export const activities = [
     },
     {
         id: 5,
+        type: 'activity',
         title: "Activity 5",
         description:
             "Some quick example text to build on the card title and make up the bulk of the card's content.",
@@ -114,6 +122,7 @@ export const activities = [
 export const workpages = [
     {
         id: "generator",
+        type: 'workpage',
         title: "Workpage Generator",
         description: "Decide your prefrences and build your own math workpage",
         imgUrl: "https://picsum.photos/200/125",
@@ -121,14 +130,15 @@ export const workpages = [
     },
     {
         id: 6,
+        type: 'workpage',
         title: "Multipication Table",
-        //up to 50
         description: "Workpage demonstartion that has a purpose of demo ",
         imgUrl: "https://picsum.photos/200/125",
         content: { imgUrl: "https://picsum.photos/595/842" }
     },
     {
         id: 7,
+        type: 'workpage',
         title: "Math Workpage 1",
         description: "Workpage demonstartion that has a purpose of bla",
         imgUrl: "https://picsum.photos/200/125",
@@ -136,6 +146,7 @@ export const workpages = [
     },
     {
         id: 8,
+        type: 'workpage',
         title: "Math Workpage 2",
         description:
             "Workpage demonstartion that has a purpose of  coserntent.",

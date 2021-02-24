@@ -1,109 +1,90 @@
-import React, { Component } from "react";
-import Card from "../components/Card";
-import PageHeaderCard from "../components/PageHeaderCard";
+import React, { Component } from 'react';
+import Card from "../components/ListCard/Card";
+import LikeButton from "../components/ListCard/LikeButton";
+import { LikeHandlerContext } from "../contexts/LikeHandler";
 
-//props: activity:{id, title, content:{goals, accesories, todo, dothis, adapt, additionalPages}, isLiked}, raiseLike
+//props:
+//id : number , date: (date), creator: (str),
+// title: (str), tags: (["str","str"]), goals: (["str", "str"]),
+// accesories: (["str", "str"]),todolist: (["str", "str"]),
+// dothis: (["str", "str"]) ,adapt: "str", additionalPages : ["ref","ref"]
 
 class ActivityPage extends Component {
-    renderList = (content, iconType = "fa fa-chevron-right") => {
-        return content.map(el => (
-            <p>
-                <i class={iconType} />
-                {" " + el}
-            </p>
-        ));
-    };
+    static contextType = LikeHandlerContext;
 
-    raiseLike = id => {
-        this.props.raiseLike(id);
-    };
-
-    render() {
-        return (
-            <div className="container p-2">
-                {/* Page Header */}
-                <PageHeaderCard
-                    text={this.props.activity.title}
-                    id={this.props.activity.id}
-                    isLiked={this.props.activity.isLiked}
-                    parentLink="/activities"
-                    raiseLike= {id => this.raiseLike(id)}
-                />
-                {/* Goals Row */}
-                <div className="row justify-content-center">
-                    <div className="col col-md-10 col-lg-8">
-                        <Card
-                            title="Goals"
-                            description={this.renderList(
-                                this.props.activity.content.goals,
-                                "fa fa-circle-thin"
-                            )}
-                        />
-                    </div>
-                </div>
-                {/* Accesories and Todo Row */}
-                <div className="row justify-content-center">
-                    <div className="col col-md-5 col-lg-4">
-                        <Card
-                            title="Accesories"
-                            description={this.renderList(
-                                this.props.activity.content.accesories,
-                                "fa fa-bolt"
-                            )}
-                        />
-                    </div>
-                    <div className="col col-md-5 col-lg-4">
-                        <Card
-                            title="To Do List"
-                            description={this.renderList(
-                                this.props.activity.content.todolist
-                            )}
-                        />
-                    </div>
-                </div>
-                {/* Lets do this Row */}
-                <div className="row justify-content-center">
-                    <div className="col col-md-10 col-lg-8">
-                        <Card
-                            title="Let's Do this!"
-                            description={this.renderList(
-                                this.props.activity.content.dothis
-                            )}
-                        />
-                    </div>
-                </div>
-                {/* Adapt Row */}
-                <div className="row justify-content-center">
-                    <div className="col col-md-10 col-lg-8">
-                        <Card
-                            title="Adapt"
-                            description={this.props.activity.content.adapt}
-                        />
-                    </div>
-                </div>
-                {/* Additional Pages */}
-                {this.props.activity.content.additionalPages.map(url => (
-                    <div className="row justify-content-center">
-                        <div className="col col-md-10 col-lg-8 text-center">
-                            <div className="card shadow-sm text-center">
-                                <div className="card-body">
-                                    <img
-                                        src={url}
-                                        alt={this.props.activity.title}
-                                        className="img-fluid rounded"
-                                    />
-                                </div>
-                            </div>
+    isLiked = () => this.context.assignLike(this.props.id) 
+    render() { 
+        return ( 
+            <div className="col-10 col-md-8 mx-auto">
+                <Card>
+                    {/*  like button, back button, date, creator, tags(folding) */}
+                    <div className="row">
+                        <div className="col-4 my-auto">
+                            <button className="btn btn-secondary mx-3">
+                                <i class="fa fa-arrow-left" />
+                            </button>
+                            <LikeButton
+                                id={this.props.id}
+                                isLiked={this.isLiked()}
+                            />
+                        </div>
+                        <div className="col-4 my-auto">
+                            <h1 className="text-center">
+                                {this.props.title}
+                            </h1>
+                        </div>
+                        <div className="col-4">
+                            <span>{this.props.creator}</span>
+                            <br />
+                            <span>{this.props.date}</span>
                         </div>
                     </div>
-                ))}          
-                {/* Footer */}
-                <div className="row justify-content-center">
-                    <h2>Good Luck!</h2>
-                </div>
+                </Card>
             </div>
-        );
+         );
     }
 }
-
+ 
 export default ActivityPage;
+
+// const ActivityPage = props => {
+//     return (
+//         // <LikeHandlerContext.Consumer>
+//             // {({ assignLike }) => {
+//             //     let isLiked = assignLike(props.id);
+//             //     return
+//                 (
+//                     <div className="col-10 col-md-8 mx-auto">
+//                         <Card>
+//                             {/*  like button, back button, date, creator, tags(folding) */}
+//                             <div className="row">
+//                                 <div className="col-4 my-auto">
+//                                     <button className="btn btn-secondary mx-3">
+//                                         <i class="fa fa-arrow-left" />
+//                                     </button>
+//                                     <LikeButton
+//                                         id={props.id}
+//                                         isLiked={props.isLiked}
+//                                     />
+//                                 </div>
+//                                 <div className="col-4 my-auto">
+//                                     <h1 className="text-center">
+//                                         {props.title}
+//                                     </h1>
+//                                 </div>
+//                                 <div className="col-4">
+//                                     <span>{props.creator}</span>
+//                                     <br />
+//                                     <span>{props.date}</span>
+//                                 </div>
+//                             </div>
+//                         </Card>
+//                     </div>
+//                 )
+//             // }}
+//             // ;
+//         // </LikeHandlerContext.Consumer>
+//     );
+// };
+
+// export default ActivityPage;
